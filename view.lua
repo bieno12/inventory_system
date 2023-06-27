@@ -113,7 +113,7 @@ end
 --buttonsBar
 local buttonsBar = window.create(root, 1, 3, root.width, 2)
 view.buttonsBar = buttonsBar
-buttonsBar.setBackgroundColor(colors.grey)
+buttonsBar.setBackgroundColor(colors.gray)
 --storeButton
 
 buttonsBar.storeButton = window.create(buttonsBar, 1, 1, 5, 2)
