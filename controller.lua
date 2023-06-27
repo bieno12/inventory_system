@@ -4,7 +4,7 @@ local model = require "model"
 local topWindow = view.topWindow
 local buttonsBar = view.buttonsBar
 local statusBar = view.statusBar
-
+local contentWindow = view.contentWindow
 function topWindow.onclick(mouseButton, posX, posY)
     local width,_ = topWindow.getSize()
 
@@ -55,6 +55,33 @@ function buttonsBar.onclick(mouseButton, posX, posY)
 end
 --end buttons bar
 
+--contentWindow
+
+function contentWindow.prevButton.onclick(mouseButton, posX, posY)
+    if contentWindow.currentPage <= 1 then return end
+    contentWindow.currentPage = contentWindow.currentPage - 1
+end
+
+function contentWindow.nextButton.onclick(mouseButton, posX, posY)
+    contentWindow.currentPage = contentWindow.currentPage + 1
+end
+
+function contentWindow.onclick(mouseButton, posX, posY)
+    --check if prevButton is clicked
+    local x, y = contentWindow.prevButton.getPosition()
+    local w, h = contentWindow.prevButton.getSize()
+    if (x <= posX and posX < w + x) and (y <= posY and posY < h + y) then
+        contentWindow.prevButton.onclick(mouseButton, posX - x + 1, posY - y + 1)
+    end
+    --check if nextButton is clicked
+    x, y = contentWindow.nextButton.getPosition()
+    w, h = contentWindow.nextButton.getSize()
+    if (x <= posX and posX < w + x) and (y <= posY and posY < h + y) then
+        contentWindow.nextButton.onclick(mouseButton, posX - x + 1, posY - y + 1)
+    end
+    
+end
+
 
 function view.root.onclick(mouseButton, posX, posY)
     --check the topWindow
@@ -71,6 +98,12 @@ function view.root.onclick(mouseButton, posX, posY)
         buttonsBar.onclick(mouseButton, posX - x + 1, posY - y + 1)
     end
 
+    --contentWindow
+    x, y = contentWindow.getPosition()
+    w, h = contentWindow.getSize()
+    if (x <= posX and posX < w + x) and (y <= posY and posY < h + y) then
+        contentWindow.onclick(mouseButton, posX - x + 1, posY - y + 1)
+    end
 end
 
 
