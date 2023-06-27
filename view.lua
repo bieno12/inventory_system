@@ -26,7 +26,7 @@ end
 -- contentWindow
 local contentWindow = window.create(root, 1, 5, root.width, root.height - 4)
 view.contentWindow = contentWindow
-contentWindow.setBackgroundColor(colors.orange)
+contentWindow.setBackgroundColor(colors.gray)
 contentWindow.currentPage = 1
 w, h = contentWindow.getSize()
 contentWindow.width = w
@@ -119,7 +119,7 @@ buttonsBar.setBackgroundColor(colors.gray)
 buttonsBar.storeButton = window.create(buttonsBar, 1, 1, 5, 2)
 buttonsBar.storeButton.setBackgroundColor(colors.blue)
 --updateButton
-buttonsBar.updateButton = window.create(root, 7, 1, 6, 2)
+buttonsBar.updateButton = window.create(buttonsBar, 7, 1, 6, 2)
 buttonsBar.updateButton.setBackgroundColor(colors.blue)
 
 
