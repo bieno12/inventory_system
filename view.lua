@@ -32,10 +32,10 @@ w, h = contentWindow.getSize()
 contentWindow.width = w
 contentWindow.height = h
 --prevButton
-contentWindow.prevButton = window.create(contentWindow, 1, math.floor(contentWindow.height / 2), 1, 1)
+contentWindow.prevButton = window.create(contentWindow, 1, math.floor(contentWindow.height / 2), 1, 2)
 contentWindow.prevButton.setBackgroundColor(colors.blue)
 --nextButton
-contentWindow.nextButton = window.create(contentWindow, contentWindow.width, math.floor(contentWindow.height / 2), 1, 1)
+contentWindow.nextButton = window.create(contentWindow, contentWindow.width, math.floor(contentWindow.height / 2), 1, 2)
 contentWindow.nextButton.setBackgroundColor(colors.blue)
 --placeholders
 
@@ -79,7 +79,14 @@ function contentWindow.draw()
         ph.draw()
     end
     --draw Buttons
+    contentWindow.prevButton.setCursorPos(1,1)
     contentWindow.prevButton.write("<")
+    contentWindow.prevButton.setCursorPos(1,2)
+    contentWindow.prevButton.write("<")
+
+    contentWindow.nextButton.setCursorPos(1,1)
+    contentWindow.nextButton.write(">")
+    contentWindow.nextButton.setCursorPos(1,2)
     contentWindow.nextButton.write(">")
 end
 
