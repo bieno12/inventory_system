@@ -16,7 +16,7 @@ for _, name in ipairs(peripheral.getNames()) do
     end
 end
 
-function model.scan_chests()
+local function scan_chests()
     local items = {}
     for i, name in ipairs(chestNames) do
         local chest = peripheral.wrap(name)
@@ -33,7 +33,11 @@ function model.scan_chests()
     end
     return items
 end
-inventory = model.scan_chests()
+inventory = scan_chests()
+
+function model.scan_chests()
+    inventory = scan_chests()
+end
 
 --stores all item in bufferChest to connected chests
 function model.storeBuffer()
