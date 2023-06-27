@@ -1,4 +1,5 @@
 local model = require "model"
+local strings = require "cc.strings"
 local view = {}
 local root = term.native()
 view.root = root
