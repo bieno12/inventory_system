@@ -16,11 +16,7 @@ function topWindow.onclick(mouseButton, posX, posY)
         topWindow.text = ""
     end
     topWindow.draw()
-
-
 end
-
-
 
 function view.root.onclick(mouseButton, posX, posY)
     --check the topWindow

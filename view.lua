@@ -109,10 +109,41 @@ function statusBar.draw()
     statusBar.setCursorPos(width - #statusBar.rightText + 1,1)
     statusBar.write(statusBar.rightText)
 end
+
+--buttonsBar
+local buttonsBar = window.create(root, 1, 3, root.width, 2)
+view.buttonsBar = buttonsBar
+buttonsBar.setBackgroundColor(colors.grey)
+--storeButton
+
+buttonsBar.storeButton = window.create(buttonsBar, 1, 1, 5, 2)
+buttonsBar.storeButton.setBackgroundColor(colors.blue)
+--updateButton
+buttonsBar.updateButton = window.create(root, 7, 1, 6, 2)
+buttonsBar.updateButton.setBackgroundColor(colors.blue)
+
+
+function buttonsBar.draw()
+    buttonsBar.clear()
+
+    --store buttonsBar
+    buttonsBar.storeButton.clear()
+    buttonsBar.storeButton.setCursorPos(1,1)
+    buttonsBar.storeButton.write("store")
+    --update Buttons
+    buttonsBar.updateButton.clear()
+    buttonsBar.updateButton.setCursorPos(1,1)
+    buttonsBar.updateButton.write("update")
+
+end
+
+
+
 function view.root.draw()
     root.clear()
     topWindow.draw()
     statusBar.draw()
+    buttonsBar.draw()
     contentWindow.draw()
 end
 return view
