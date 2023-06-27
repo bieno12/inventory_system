@@ -95,7 +95,7 @@ function contentWindow.draw()
     contentWindow.nextButton.setCursorPos(1,2)
     contentWindow.nextButton.write(">")
     --draw currentPage
-    contentWindow.setCursorPos(1, math.floor(contentWindow.width / 2) - 2)
+    contentWindow.setCursorPos(math.floor(contentWindow.width / 2) - 2, 1)
     contentWindow.write(("page %d"): format(contentWindow.currentPage))
 end
 --statusBar
