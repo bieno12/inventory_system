@@ -95,10 +95,23 @@ function contentWindow.draw()
     contentWindow.nextButton.setCursorPos(1,2)
     contentWindow.nextButton.write(">")
 end
-
+--statusBar
+local statusBar = window.create(root, 1, 2, root.width, 1)
+view.statusBar = statusBar
+statusBar.setBackgroundColor(colors.red)
+statusBar.leftText = "Hello"
+statusBar.rightText = "there"
+function statusBar.draw()
+    statusBar.clear()
+    statusBar.setCursorPos(1,1)
+    statusBar.write(statusBar.leftText)
+    local width, height = statusBar.getSize()
+    statusBar.setCursorPos(width - #statusBar.rightText,1)
+end
 function view.root.draw()
     root.clear()
     topWindow.draw()
+    statusBar.draw()
     contentWindow.draw()
 end
 return view

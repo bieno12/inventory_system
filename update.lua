@@ -1,7 +1,7 @@
 local URL_PREFIX = 'https://raw.githubusercontent.com/bieno12/inventory_system/master/'
 local DIR_PREFIX = '/inventory_system/'
 local headers = {}
-headers["cache-control"] = "no-cache"
+headers["Cache-Control"] = "no-cache"
 local function entry(name)
     return function()
         local response = http.get(URL_PREFIX .. name, headers, true)
