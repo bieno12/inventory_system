@@ -36,6 +36,6 @@ end
 -- main loop
 while true do
 	view.root.draw()
-	local mouseButton, posX, posY = os.pullEvent("mouse_click")
+	local _,mouseButton, posX, posY = os.pullEvent("mouse_click")
     view.root.onclick(mouseButton, posX, posY)
 end
