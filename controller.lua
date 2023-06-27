@@ -20,11 +20,22 @@ function topWindow.onclick(mouseButton, posX, posY)
 
 end
 
-local function draw()
-	topWindow.draw()
+
+
+function view.root.onclick(mouseButton, posX, posY)
+    --check the topWindow
+    local x, y = topWindow.getPosition()
+    local w, h = topWindow.getSize()
+    if (x <= posX and posX < w + x) and (y <= posY and posY < h + y) then
+        topWindow.onclick(mouseButton, posX - x + 1, posY - y + 1)
+    end
 end
+
+
+
 -- main loop
 while true do
-	draw()
+	view.root.draw()
 	local mouseButton, posX, posY = os.pullEvent("mouse_click")
+    view.root.onclick(mouseButton, posX, posY)
 end

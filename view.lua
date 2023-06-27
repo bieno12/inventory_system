@@ -19,4 +19,8 @@ function topWindow.draw()
     topWindow.write("XX")
 end
 
+
+function view.root.draw()
+    topWindow.draw()
+end
 return view
