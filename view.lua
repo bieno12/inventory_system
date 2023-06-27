@@ -66,9 +66,15 @@ contentWindow.phs = {}
 local phwidth = 15
 local phheight = 2
 for i = 0, 21 - 1 do
-    local x = (math.floor(i / 7) * phwidth + 1) + 2
+    local x = (math.floor(i / 7) * phwidth + 1) + 3
     local y = (i % 7) * phheight + 1 + 1
-    local newph = create_placeholder(x, y, phwidth, phheight, colors.red)
+    local color
+    if (i % 2 == 0) then
+        color = colors.blue
+    else
+        color = colors.red
+    end
+    local newph = create_placeholder(x, y, phwidth, phheight, color)
     table.insert(contentWindow.phs, newph)
 end
 
