@@ -24,7 +24,7 @@ function topWindow.draw()
 end
 
 -- contentWindow
-local contentWindow = window.create(root, 1, 3, root.width, root.height - 2)
+local contentWindow = window.create(root, 1, 5, root.width, root.height - 4)
 view.contentWindow = contentWindow
 contentWindow.setBackgroundColor(colors.orange)
 contentWindow.currentPage = 1
