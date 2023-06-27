@@ -47,8 +47,7 @@ local function create_placeholder(posX, posY, width, height, color)
     placeholder.height = height
     function placeholder.draw()
         placeholder.clear()
-        local lines = strings.wrap("hello there f",
-        placeholder.myWidth)
+        local lines = strings.wrap("hello there f", placeholder.width)
         --draw name
         for i = 1, #lines do
             placeholder.setCursorPos(1, i)
