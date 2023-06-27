@@ -1,4 +1,4 @@
-local URL_PREFIX = 'https://raw.githubusercontent.com/Black-Hack/mcc/master/'
+local URL_PREFIX = 'https://raw.githubusercontent.com/bieno12/inventory_system/master/'
 local DIR_PREFIX = '/mcc/'
 
 local function entry(name)
