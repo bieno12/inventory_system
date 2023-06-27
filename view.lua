@@ -62,27 +62,25 @@ local function create_placeholder(posX, posY, width, height, color)
 end
 
 contentWindow.phs = {}
--- 5 x 3 placeholders
+-- 7 x 3 placeholders
 local phwidth = 15
 local phheight = 2
-for i = 0, 14 do
-    local x = (math.floor(i / 5) * phwidth + 1) + 1
-    local y = (i % 5) * phheight + 1 + 1
+for i = 0, 21 - 1 do
+    local x = (math.floor(i / 7) * phwidth + 1) + 2
+    local y = (i % 7) * phheight + 1 + 1
     local newph = create_placeholder(x, y, phwidth, phheight, colors.red)
     table.insert(contentWindow.phs, newph)
 end
 
 function contentWindow.draw()
     contentWindow.clear()
-    --draw Buttons
-    contentWindow.prevButton.write("<")
-    contentWindow.nextButton.write(">")
-
     --draw placeholders
     for _, ph in pairs(contentWindow.phs) do
         ph.draw()
     end
-
+    --draw Buttons
+    contentWindow.prevButton.write("<")
+    contentWindow.nextButton.write(">")
 end
 
 function view.root.draw()
