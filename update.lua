@@ -2,6 +2,8 @@ local URL_PREFIX = 'https://raw.githubusercontent.com/bieno12/inventory_system/m
 local DIR_PREFIX = '/inventory_system/'
 local headers = {}
 headers["Cache-Control"] = "no-cache"
+headers["Pragma"] = "no-cache"
+
 local function entry(name)
     return function()
         local url = URL_PREFIX .. name .. "?timestamp=" .. os.time()
