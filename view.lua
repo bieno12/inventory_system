@@ -25,7 +25,7 @@ end
 -- contentWindow
 local contentWindow = window.create(root, 1, 3, root.width, root.height - 2)
 view.contentWindow = contentWindow
-contentWindow.setBackgroundColor(colors.grey)
+contentWindow.setBackgroundColor(colors.orange)
 contentWindow.currentPage = 1
 w, h = contentWindow.getSize()
 contentWindow.width = w
@@ -82,7 +82,7 @@ function contentWindow.draw()
     for _, ph in pairs(contentWindow.phs) do
         ph.draw()
     end
-    
+
 end
 
 function view.root.draw()
