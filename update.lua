@@ -5,7 +5,7 @@ headers["Cache-Control"] = "no-cache"
 local function entry(name)
     return function()
         local url = URL_PREFIX .. name .. "?timestamp=" .. os.time()
-        local response = http.get(URL_PREFIX .. name, headers, true)
+        local response = http.get(url, headers, true)
         print(("%s : %d"):format(name, response.getResponseCode()))
         local file = fs.open(DIR_PREFIX .. name, 'wb')
         file.write(response.readAll())
