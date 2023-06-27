@@ -84,7 +84,7 @@ function model.fetchItem(item, itemCount)
 		local chest = peripheral.wrap(chestNames[i])
 		for slot, _ in pairs(chest.list()) do
 			if itemCount <= 0 then
-                goto finished
+                break
             end
 			local currentItemstr = getItemStrFromSlot(chest, slot)
 			if currentItemstr == itemstr then
@@ -95,7 +95,6 @@ function model.fetchItem(item, itemCount)
 		end
 		i = i + 1
 	end
-    ::finished::
     if inventory[itemstr] <= 0 then
 		inventory[itemstr] = nil
 	end
