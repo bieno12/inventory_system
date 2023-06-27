@@ -1,9 +1,10 @@
 local URL_PREFIX = 'https://raw.githubusercontent.com/bieno12/inventory_system/master/'
 local DIR_PREFIX = '/inventory_system/'
-
+local headers = {}
+headers["cache-control"] = "no-cache"
 local function entry(name)
     return function()
-        response = http.get(URL_PREFIX .. name, nil, true)
+        local response = http.get(URL_PREFIX .. name, headers, true)
         print(("%s : %d"):format(name, response.getResponseCode()))
         local file = fs.open(DIR_PREFIX .. name, 'wb')
         file.write(response.readAll())
