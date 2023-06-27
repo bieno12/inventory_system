@@ -1,9 +1,9 @@
 local URL_PREFIX = 'https://raw.githubusercontent.com/bieno12/inventory_system/master/'
-local DIR_PREFIX = '/mcc/'
+local DIR_PREFIX = '/inventory_system/'
 
 local function entry(name)
     return function()
-        local response = http.get(URL_PREFIX .. name, nil, true)
+        response = http.get(URL_PREFIX .. name, nil, true)
         local file = fs.open(DIR_PREFIX .. name, 'wb')
         file.write(response.readAll())
         file.close()
