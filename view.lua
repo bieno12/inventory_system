@@ -106,7 +106,7 @@ function statusBar.draw()
     statusBar.setCursorPos(1,1)
     statusBar.write(statusBar.leftText)
     local width, height = statusBar.getSize()
-    statusBar.setCursorPos(width - #statusBar.rightText,1)
+    statusBar.setCursorPos(width - #statusBar.rightText + 1,1)
     statusBar.write(statusBar.rightText)
 end
 function view.root.draw()
