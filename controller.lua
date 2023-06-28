@@ -39,6 +39,9 @@ function topWindow.onclick(mouseButton, posX, posY)
         contentWindow.fillPlaceholders()
     else
         topWindow.text = ""
+        contentWindow.currentPage = 1
+        contentWindow.items = model.searchItems(topWindow.text)
+        contentWindow.fillPlaceholders()
     end
     topWindow.draw()
 end
