@@ -16,7 +16,8 @@ else
 end
 
 local view = require( "view")
-local model = require("model")(bufferChestName)
+local model = require("model")
+model.setBufferChest(bufferChestName)
 
 local topWindow = view.topWindow
 local buttonsBar = view.buttonsBar

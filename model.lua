@@ -1,9 +1,14 @@
 local model = {}
-local bufferChestName = ...
+local bufferChestName = "minecraft:chest_0"
 local bufferChest = peripheral.wrap(bufferChestName)
 local chestNames = {}
 local inventory = {}
 
+
+function model.setBufferChest(name)
+    bufferChestName = name
+    bufferChest = peripheral.wrap(bufferChestName)
+end
 
 --get names of connected chests
 for _, name in ipairs(peripheral.getNames()) do
