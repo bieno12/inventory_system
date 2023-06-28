@@ -1,5 +1,22 @@
-local view = require "view"
-local model = require "model"
+local arg = {...}
+local bufferChestName
+
+
+--validate bufferChestName
+if #arg ~= 1 then
+    print("inventory [buffer_chest]")
+    return
+else
+    bufferChestName = arg[1]
+    local chest = peripheral.wrap(bufferChestName)
+    if not chest or not peripheral.hasType(bufferChestName, "inventory") then
+        error("peripheral has to be of type inventory")
+        return
+    end
+end
+
+local view = require( "view")
+local model = require("model")(bufferChestName)
 
 local topWindow = view.topWindow
 local buttonsBar = view.buttonsBar
