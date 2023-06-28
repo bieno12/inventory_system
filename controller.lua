@@ -24,8 +24,6 @@ local topWindow = view.topWindow
 local buttonsBar = view.buttonsBar
 local statusBar = view.statusBar
 local contentWindow = view.contentWindow
-contentWindow.items = model.searchItems(topWindow.text or "")
-contentWindow.fillPlaceholders()
 function topWindow.onclick(mouseButton, posX, posY)
     local width,_ = topWindow.getSize()
 
@@ -38,6 +36,7 @@ function topWindow.onclick(mouseButton, posX, posY)
         term.redirect(oldterm)
         contentWindow.currentPage = 1
         contentWindow.items = model.searchItems(topWindow.text)
+        contentWindow.fillPlaceholders()
     else
         topWindow.text = ""
     end
@@ -84,11 +83,13 @@ end
 function contentWindow.prevButton.onclick(mouseButton, posX, posY)
     if contentWindow.currentPage <= 1 then return end
     contentWindow.currentPage = contentWindow.currentPage - 1
+    contentWindow.fillPlaceholders()
 end
 
 function contentWindow.nextButton.onclick(mouseButton, posX, posY)
     contentWindow.currentPage = contentWindow.currentPage + 1
     contentWindow.currentPage = math.min(contentWindow.currentPage, math.ceil(#contentWindow.items / #contentWindow.phs))
+    contentWindow.fillPlaceholders()
 end
 
 function contentWindow.onclick(mouseButton, posX, posY)

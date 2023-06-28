@@ -28,6 +28,9 @@ local contentWindow = window.create(root, 1, 5, root.width, root.height - 4)
 view.contentWindow = contentWindow
 contentWindow.setBackgroundColor(colors.gray)
 contentWindow.currentPage = 1
+contentWindow.items = model.searchItems(topWindow.text or "")
+contentWindow.fillPlaceholders()
+
 w, h = contentWindow.getSize()
 contentWindow.width = w
 contentWindow.height = h
@@ -107,11 +110,11 @@ function contentWindow.fillPlaceholders()
     while i + (page - 1) * #contentWindow.phs <= #items and i <= #contentWindow.phs do
         local ph = contentWindow.phs[i];
         ph.setVisible(true)
-        ph.item= items[i + (page - 1) * #contentWindow.phs]
+        ph.item = items[i + (page - 1) * #contentWindow.phs]
         i = i + 1
     end
     while i <= #contentWindow.phs do
-        contentWindow.phs[i].items = nil
+        contentWindow.phs[i].item = nil
         contentWindow.phs[i].setVisible(false)
         i = i + 1
     end
