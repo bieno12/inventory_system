@@ -29,7 +29,7 @@ view.contentWindow = contentWindow
 contentWindow.setBackgroundColor(colors.gray)
 contentWindow.currentPage = 1
 contentWindow.items = model.searchItems(topWindow.text or "")
-contentWindow.fillPlaceholders()
+
 
 w, h = contentWindow.getSize()
 contentWindow.width = w
@@ -119,7 +119,7 @@ function contentWindow.fillPlaceholders()
         i = i + 1
     end
 end
-
+contentWindow.fillPlaceholders()
 
 --statusBar
 local statusBar = window.create(root, 1, 2, root.width, 1)
