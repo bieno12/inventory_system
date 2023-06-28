@@ -76,7 +76,7 @@ function model.searchItems(displayName)
         local itemTable = textutils.unserialise(itemstr)
 
         if string.find(string.upper(itemTable.displayName), string.upper(displayName)) then
-            table.insert(result, itemTable)
+            table.insert(result, {itemTable, itemstr})
         end
     end
     return result
@@ -114,8 +114,7 @@ function model.getItemCount(item)
 	if not item then
         error("item is nil")
     end
-    local itemstr = textutils.serialise(item)
-    
-	return inventory[itemstr]
+    -- local itemstr = textutils.serialise(item)
+	return inventory[item]
 end
 return model

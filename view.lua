@@ -52,7 +52,7 @@ local function create_placeholder(posX, posY, width, height, color)
     function placeholder.draw()
         if not placeholder.isVisible() then return end
         placeholder.clear()
-        local lines = strings.wrap(placeholder.item.displayName, placeholder.width)
+        local lines = strings.wrap(placeholder.item.itemTable.displayName, placeholder.width)
         --draw name
         for i = 1, #lines do
             placeholder.setCursorPos(1, i)
@@ -60,7 +60,7 @@ local function create_placeholder(posX, posY, width, height, color)
         end
         --draw count
         placeholder.setCursorPos(placeholder.width - 3, placeholder.height)
-        placeholder.write(model.getItemCount(placeholder.item))
+        placeholder.write(model.getItemCount(placeholder.item.itemstr))
     end
     return placeholder
 end
