@@ -82,7 +82,6 @@ end
 function contentWindow.draw()
     contentWindow.clear()
     --draw placeholders
-    contentWindow.fillPlaceholders()
     for _, ph in pairs(contentWindow.phs) do
         ph.draw()
     end

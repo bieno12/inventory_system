@@ -108,6 +108,8 @@ end
 
 
 function view.root.onclick(mouseButton, posX, posY)
+    contentWindow.items = model.searchItems(topWindow.text)
+    contentWindow.fillPlaceholders()
     --check the topWindow
     local x, y = topWindow.getPosition()
     local w, h = topWindow.getSize()
