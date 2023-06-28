@@ -47,8 +47,9 @@ local function create_placeholder(posX, posY, width, height, color)
     placeholder.width = width
     placeholder.height = height
     function placeholder.draw()
+        if not placeholder.isVisible() then return end
         placeholder.clear()
-        local lines = strings.wrap("hello there f", placeholder.width)
+        local lines = strings.wrap(placeholder.item.displayName, placeholder.width)
         --draw name
         for i = 1, #lines do
             placeholder.setCursorPos(1, i)
@@ -81,6 +82,7 @@ end
 function contentWindow.draw()
     contentWindow.clear()
     --draw placeholders
+    contentWindow.fillPlaceholders()
     for _, ph in pairs(contentWindow.phs) do
         ph.draw()
     end
@@ -98,6 +100,26 @@ function contentWindow.draw()
     contentWindow.setCursorPos(math.floor(contentWindow.width / 2) - 2, 1)
     contentWindow.write(("page %d"): format(contentWindow.currentPage))
 end
+
+function contentWindow.fillPlaceholders()
+    local items = contentWindow.items
+    local page = contentWindow.currentPage
+    local i = 1
+    while i + (page - 1) * #contentWindow.phs <= #items and i <= #contentWindow.phs do
+        local ph = contentWindow.phs[i];
+        ph.setVisible(true)
+        ph.item= items[i + (page - 1) * #contentWindow.phs]
+        i = i + 1
+    end
+    while i <= #contentWindow.phs do
+        contentWindow.phs[i].items = nil
+        contentWindow.phs[i].setVisible(false)
+        i = i + 1
+    end
+
+end
+
+
 --statusBar
 local statusBar = window.create(root, 1, 2, root.width, 1)
 view.statusBar = statusBar

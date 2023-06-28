@@ -33,6 +33,8 @@ function topWindow.onclick(mouseButton, posX, posY)
         topWindow.setCursorPos(1, 1)
         topWindow.text = read()
         term.redirect(oldterm)
+        contentWindow.currentPage = 1
+        contentWindow.items = model.searchItems(topWindow.text)
     else
         topWindow.text = ""
     end
@@ -46,6 +48,7 @@ function buttonsBar.storeButton.onclick(mouseButton, posX, posY)
     model.storeBuffer()
     statusBar.leftText = "finished storing"
     statusBar.draw()
+
 end
 
 function buttonsBar.updateButton.onclick(mouseButton, posX, posY)
@@ -82,6 +85,7 @@ end
 
 function contentWindow.nextButton.onclick(mouseButton, posX, posY)
     contentWindow.currentPage = contentWindow.currentPage + 1
+    contentWindow.currentPage = math.min(contentWindow.currentPage, math.ceil(#contentWindow.items / #contentWindow.phs))
 end
 
 function contentWindow.onclick(mouseButton, posX, posY)

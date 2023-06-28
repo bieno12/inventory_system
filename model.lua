@@ -69,13 +69,14 @@ function model.storeBuffer()
     end
 end
 
+
 function model.searchItems(displayName)
     local result = {}
     for itemstr, count in pairs(inventory) do
         local itemTable = textutils.unserialise(itemstr)
 
         if string.find(string.upper(itemTable.displayName), string.upper(displayName)) then
-            table.insert(result, itemstr)
+            table.insert(result, textutils.unserialise(itemstr))
         end
     end
     return result
