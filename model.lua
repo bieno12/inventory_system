@@ -76,7 +76,7 @@ function model.searchItems(displayName)
         local itemTable = textutils.unserialise(itemstr)
 
         if string.find(string.upper(itemTable.displayName), string.upper(displayName)) then
-            table.insert(result, textutils.unserialise(itemstr))
+            table.insert(result, itemTable)
         end
     end
     return result

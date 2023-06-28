@@ -24,7 +24,7 @@ local topWindow = view.topWindow
 local buttonsBar = view.buttonsBar
 local statusBar = view.statusBar
 local contentWindow = view.contentWindow
-contentWindow.items = model.searchItems("")
+contentWindow.items = model.searchItems(topWindow.text or "")
 contentWindow.fillPlaceholders()
 function topWindow.onclick(mouseButton, posX, posY)
     local width,_ = topWindow.getSize()
@@ -109,7 +109,6 @@ end
 
 
 function view.root.onclick(mouseButton, posX, posY)
-    contentWindow.items = model.searchItems(topWindow.text)
     contentWindow.fillPlaceholders()
     --check the topWindow
     local x, y = topWindow.getPosition()

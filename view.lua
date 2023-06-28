@@ -57,7 +57,7 @@ local function create_placeholder(posX, posY, width, height, color)
         end
         --draw count
         placeholder.setCursorPos(placeholder.width - 3, placeholder.height)
-        placeholder.write(model.getItemCount(placeholder.item))
+        placeholder.write(model.getItemCount(textutils.serialise(placeholder.item)))
     end
     return placeholder
 end
@@ -115,7 +115,6 @@ function contentWindow.fillPlaceholders()
         contentWindow.phs[i].setVisible(false)
         i = i + 1
     end
-
 end
 
 
