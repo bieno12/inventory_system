@@ -111,7 +111,11 @@ function model.fetchItem(item, itemCount)
 end
 
 function model.getItemCount(item)
-	local itemstr = textutils.serialise(item)
+	if not item then
+        error("item is nil")
+    end
+    local itemstr = textutils.serialise(item)
+    
 	return inventory[itemstr]
 end
 return model
