@@ -25,6 +25,7 @@ local buttonsBar = view.buttonsBar
 local statusBar = view.statusBar
 local contentWindow = view.contentWindow
 contentWindow.items = model.searchItems("")
+contentWindow.fillPlaceholders()
 function topWindow.onclick(mouseButton, posX, posY)
     local width,_ = topWindow.getSize()
 
