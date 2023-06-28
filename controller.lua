@@ -1,3 +1,4 @@
+--hello there
 local arg = {...}
 local bufferChestName
 
@@ -23,6 +24,7 @@ local topWindow = view.topWindow
 local buttonsBar = view.buttonsBar
 local statusBar = view.statusBar
 local contentWindow = view.contentWindow
+contentWindow.items = model.searchItems("")
 function topWindow.onclick(mouseButton, posX, posY)
     local width,_ = topWindow.getSize()
 
