@@ -130,7 +130,15 @@ function contentWindow.onclick(mouseButton, posX, posY)
     if (x <= posX and posX < w + x) and (y <= posY and posY < h + y) then
         contentWindow.nextButton.onclick(mouseButton, posX - x + 1, posY - y + 1)
     end
-    
+    --check placeholders
+    for i = 1, #contentWindow.placeholders do
+        local ph = contentWindow.placeholders[i];
+        x, y = ph.getPosition()
+        w, h = ph.getSize()
+        if (x <= posX and posX < w + x) and (y <= posY and posY < h + y) then
+            ph.onclick(mouseButton, posX - x + 1, posY - y + 1)
+        end
+    end
 end
 
 
