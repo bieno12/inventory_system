@@ -85,6 +85,23 @@ end
 
 --contentWindow
 
+for i,ph in ipairs(contentWindow.phs) do
+    function ph.onclick(mouseButton, posX, posY)
+        if mouseButton == 1 then
+            statusBar.leftText = "fetching " .. " 1 " .. ph.item.itemTable.displayName
+            statusBar.draw()
+            model.fetchItem(ph.item.itemstr, 1)
+            statusBar.leftText = "fetched " .. " 1 " .. ph.item.itemTable.displayName
+            statusBar.draw()
+        elseif mouseButton == 2 then
+            statusBar.leftText = "fetching " .. " 64 " .. ph.item.itemTable.displayName
+            statusBar.draw()
+            model.fetchItem(ph.item.itemstr, 64)
+            statusBar.leftText = "fetched " .. " 64 " .. ph.item.itemTable.displayName
+            statusBar.draw()
+        end
+    end
+end
 function contentWindow.prevButton.onclick(mouseButton, posX, posY)
     if contentWindow.currentPage <= 1 then return end
     contentWindow.currentPage = contentWindow.currentPage - 1

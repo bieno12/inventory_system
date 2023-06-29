@@ -87,8 +87,7 @@ local function getItemStrFromSlot(chest, slot)
     itemDetail.count = nil
     return textutils.serialise(itemDetail)
 end
-function model.fetchItem(item, itemCount)
-    local itemstr = textutils.serialise(item)
+function model.fetchItem(itemstr, itemCount)
 	local i = 1
 	while i <= #chestNames and itemCount > 0 do
 		local chest = peripheral.wrap(chestNames[i])
