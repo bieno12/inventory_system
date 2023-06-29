@@ -103,6 +103,7 @@ for i,ph in ipairs(contentWindow.phs) do
     end
     if not model.getItemCount(ph.item.itemstr) then
         contentWindow.items = model.searchItems(topWindow.text or "")
+        contentWindow.fillPlaceholders()
     end 
 end
 function contentWindow.prevButton.onclick(mouseButton, posX, posY)
