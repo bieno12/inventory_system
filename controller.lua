@@ -131,8 +131,8 @@ function contentWindow.onclick(mouseButton, posX, posY)
         contentWindow.nextButton.onclick(mouseButton, posX - x + 1, posY - y + 1)
     end
     --check placeholders
-    for i = 1, #contentWindow.placeholders do
-        local ph = contentWindow.placeholders[i];
+    for i = 1, #contentWindow.phs do
+        local ph = contentWindow.phs[i];
         x, y = ph.getPosition()
         w, h = ph.getSize()
         if (x <= posX and posX < w + x) and (y <= posY and posY < h + y) then
