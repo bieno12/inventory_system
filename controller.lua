@@ -87,6 +87,7 @@ end
 
 for i,ph in ipairs(contentWindow.phs) do
     function ph.onclick(mouseButton, posX, posY)
+        if not ph.isVisible() then return end
         if mouseButton == 1 then
             statusBar.leftText = "fetching " .. " 1 " .. ph.item.itemTable.displayName
             statusBar.draw()
@@ -101,10 +102,8 @@ for i,ph in ipairs(contentWindow.phs) do
             statusBar.draw()
         end
     end
-    if not model.getItemCount(ph.item.itemstr) then
-        contentWindow.items = model.searchItems(topWindow.text or "")
-        contentWindow.fillPlaceholders()
-    end 
+    contentWindow.items = model.searchItems(topWindow.text or "")
+    contentWindow.fillPlaceholders()
 end
 function contentWindow.prevButton.onclick(mouseButton, posX, posY)
     if contentWindow.currentPage <= 1 then return end

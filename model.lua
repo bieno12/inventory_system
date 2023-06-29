@@ -1,5 +1,5 @@
 local model = {}
-local bufferChestName = "minecraft:chest_0"
+local bufferChestName = "minecraft:chest_16"
 local bufferChest = peripheral.wrap(bufferChestName)
 local chestNames = {}
 local inventory = {}
