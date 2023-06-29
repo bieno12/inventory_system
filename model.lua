@@ -8,9 +8,18 @@ local inventory = {}
 function model.setBufferChest(name)
     bufferChestName = name
     bufferChest = peripheral.wrap(bufferChestName)
+    chestNames = {}
+    for _, name in ipairs(peripheral.getNames()) do
+        if peripheral.hasType(name, "inventory")
+            and name ~= bufferChestName
+            and name ~= "right"
+            and name ~= "left" then
+    
+            table.insert(chestNames, name)
+        end
+    end
 end
 
---get names of connected chests
 for _, name in ipairs(peripheral.getNames()) do
     if peripheral.hasType(name, "inventory")
 		and name ~= bufferChestName
@@ -20,6 +29,8 @@ for _, name in ipairs(peripheral.getNames()) do
         table.insert(chestNames, name)
     end
 end
+
+--get names of connected chests
 
 local function scan_chests()
     local items = {}
