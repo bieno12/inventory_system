@@ -103,6 +103,8 @@ for i,ph in ipairs(contentWindow.phs) do
         end
     end
     if not model.getItemCount(ph.item.itemstr) then
+        statusBar.rightText = "its nil"
+        statusBar.draw()
         contentWindow.items = model.searchItems(topWindow.text or "")
         contentWindow.fillPlaceholders()
     end 
