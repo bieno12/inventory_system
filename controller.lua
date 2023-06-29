@@ -101,6 +101,9 @@ for i,ph in ipairs(contentWindow.phs) do
             statusBar.draw()
         end
     end
+    if not model.getItemCount(ph.item.itemstr) then
+        contentWindow.items = model.searchItems(topWindow.text or "")
+    end 
 end
 function contentWindow.prevButton.onclick(mouseButton, posX, posY)
     if contentWindow.currentPage <= 1 then return end
