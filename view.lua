@@ -148,7 +148,9 @@ buttonsBar.storeButton.setBackgroundColor(colors.blue)
 buttonsBar.updateButton = window.create(buttonsBar, 7, 1, 6, 2)
 buttonsBar.updateButton.setBackgroundColor(colors.blue)
 
-
+--updateButton
+buttonsBar.sortButton = window.create(buttonsBar, 13, 1, 4, 2)
+buttonsBar.sortButton.setBackgroundColor(colors.blue)
 function buttonsBar.draw()
     buttonsBar.clear()
 
@@ -160,9 +162,11 @@ function buttonsBar.draw()
     buttonsBar.updateButton.clear()
     buttonsBar.updateButton.setCursorPos(1,1)
     buttonsBar.updateButton.write("update")
-
+    --sort Buttons
+    buttonsBar.sortButton.clear()
+    buttonsBar.sortButton.setCursorPos(1,1)
+    buttonsBar.sortButton.write("sort")
 end
-
 
 
 function view.root.draw()

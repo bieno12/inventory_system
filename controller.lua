@@ -18,6 +18,8 @@ end
 
 local view = require( "view")
 local model = require("model")
+local sortchest = require "..lib.sortchest"
+
 model.setBufferChest(bufferChestName)
 
 local topWindow = view.topWindow
@@ -57,13 +59,36 @@ function buttonsBar.storeButton.onclick(mouseButton, posX, posY)
 end
 
 function buttonsBar.updateButton.onclick(mouseButton, posX, posY)
-    statusBar.leftText = "scanning chests.."
+    statusBar.leftText = "sorting chests.."
     statusBar.draw()
     model.scan_chests()
-    statusBar.leftText = "finished scanning"
+    statusBar.leftText = "sorting scanning"
     statusBar.draw()
 end
 
+function buttonsBar.sortButton.onclick(mouseButton, posX, posY)
+    statusBar.leftText = "sorting chests.."
+    statusBar.draw()
+    sortchest.sort(nil, function(a, b)
+        if a.item.name < b.item.name then return true end
+        if a.item.name > b.item.name then return false end
+        
+        if a.item.count < b.item.count then return false end
+        if a.item.count > b.item.count then return true end
+        
+        local chestA = peripheral.getName(a.chest)
+        local chestB = peripheral.getName(b.chest)
+        if chestA < chestB then return true end
+        if chestA > chestB then return false end
+        
+        if a.slot < b.slot then return true end
+        if a.slot > b.slot then return false end
+        
+        return false
+    end)
+    statusBar.leftText = "sorted"
+    statusBar.draw()
+end
 function buttonsBar.onclick(mouseButton, posX, posY)
     --store button
     local x, y = buttonsBar.storeButton.getPosition()
